@@ -195,9 +195,9 @@ export function CirclesTab() {
         >
           <header className="mb-8">
             <h1 className="text-2xl font-light text-primary mb-2">
-              Dala Circles
+              Flints Circles
             </h1>
-            <p className="text-secondary text-sm">You are not alone here.</p>
+            <p className="text-secondary text-sm">Private topic circles on this device. Shared community is disconnected.</p>
           </header>
 
           {/* Search */}
@@ -239,7 +239,7 @@ export function CirclesTab() {
           {/* Feed Posts */}
           <div className="space-y-6">
             <h2 className="text-sm font-medium text-secondary uppercase tracking-widest px-2">
-              Recent Posts
+              Your Posts
             </h2>
             
             {loadingFeed ? (
@@ -260,7 +260,7 @@ export function CirclesTab() {
             ) : (
               <div className="text-center py-12 bg-white rounded-2xl border border-divider/30">
                 <p className="text-secondary text-sm mb-2">No posts yet</p>
-                <p className="text-secondary text-xs">Join a circle to see posts from the community</p>
+                <p className="text-secondary text-xs">Open a circle to start your own topic notes</p>
               </div>
             )}
           </div>

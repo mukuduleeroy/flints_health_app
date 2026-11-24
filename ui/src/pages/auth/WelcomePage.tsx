@@ -30,10 +30,10 @@ export function WelcomePage({
       <div className="space-y-6">
         <div className="text-center mb-8">
           <h2 className="text-2xl font-light text-primary mb-2">
-            Welcome to Dala
+            Welcome to Flints
           </h2>
           <p className="text-secondary">
-            A safe place to pause and feel heard.
+            A private place to pause. Your data stays on this device.
           </p>
         </div>
 
@@ -54,20 +54,20 @@ export function WelcomePage({
           </div>
           <div className="relative flex justify-center text-xs uppercase">
             <span className="bg-white px-2 text-subtle">
-              Or create an account
+              Or create a device profile
             </span>
           </div>
         </div>
 
         <button onClick={() => onNavigate('signup')} className="w-full bg-white border border-divider text-primary py-3.5 rounded-xl font-medium hover:border-sage/50 hover:bg-background transition-all">
-          Sign Up
+          Create Profile
         </button>
 
         <div className="text-center mt-4">
           <p className="text-sm text-secondary">
-            Already have an account?{' '}
+            Have a profile on this iPhone?{' '}
             <button onClick={() => onNavigate('login')} className="text-sage font-medium hover:underline">
-              Log In
+              Open Profile
             </button>
           </p>
         </div>

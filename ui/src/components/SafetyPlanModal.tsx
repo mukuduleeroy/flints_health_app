@@ -93,14 +93,14 @@ export function SafetyPlanModal({ isOpen, onClose }: SafetyPlanModalProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+        className="safety-overlay fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
         onClick={onClose}
       >
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.95, opacity: 0 }}
-          className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+          className="safety-dialog bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
@@ -108,6 +108,7 @@ export function SafetyPlanModal({ isOpen, onClose }: SafetyPlanModalProps) {
             <h2 className="text-xl font-medium text-primary">My Safety Plan</h2>
             <button
               onClick={onClose}
+              aria-label="Close safety plan"
               className="p-2 hover:bg-background rounded-full transition-colors"
             >
               <X size={20} />
@@ -173,7 +174,7 @@ export function SafetyPlanModal({ isOpen, onClose }: SafetyPlanModalProps) {
                 items={plan.emergency_contacts}
                 onAdd={() => addItem('emergency_contacts')}
                 onRemove={(i) => removeItem('emergency_contacts', i)}
-                defaultItems={['988 - Suicide & Crisis Lifeline', '911 - Emergency Services']}
+
               />
 
               {/* Safe Environment */}
@@ -237,12 +238,12 @@ interface SectionProps {
 
 function Section({ title, description, items, onAdd, onRemove, defaultItems = [] }: SectionProps) {
   const allItems = [...defaultItems, ...items];
-  
+
   return (
     <div>
       <h3 className="text-sm font-medium text-primary mb-1">{title}</h3>
       <p className="text-xs text-secondary mb-3">{description}</p>
-      
+
       <div className="space-y-2">
         {allItems.map((item, index) => (
           <div
@@ -260,7 +261,7 @@ function Section({ title, description, items, onAdd, onRemove, defaultItems = []
             )}
           </div>
         ))}
-        
+
         <button
           onClick={onAdd}
           className="w-full border-2 border-dashed border-divider rounded-lg px-4 py-2.5 text-sm text-secondary hover:text-sage hover:border-sage transition-colors flex items-center justify-center space-x-2"

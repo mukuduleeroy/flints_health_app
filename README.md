@@ -1,141 +1,51 @@
-# Dala - Mental Health & Faith Companion
+# Flints
 
-A Christian-focused mental health companion app with AI support, mood tracking, and safety planning features.
+Flints is an iPhone wellbeing and faith companion with the original sage-and-stone UI, mood check-ins, private journaling, guided paths, topic circles, a safety plan, and on-device management tools.
 
-## Features
+This version has **no backend and no LLM connection**. The previous server, database/migration code, cloud deployment configuration, and model integration have been removed. The companion screen remains visible, with Listen / Reflect / Ground modes and a clear disconnected state for a future AI connection.
 
-- 🤖 AI Companion (Dala) - Christian-focused conversational support
-- 📊 Mood Tracking - Daily mood logging with history visualization
-- 📖 Daily Verses - Scripture and devotionals based on your mood
-- 🛡️ Safety Plan - Crisis management and coping strategies
-- 👥 Circles & Paths - Community support and guided journeys
-- 🙏 Prayer & Reflection - Journal entries and spiritual growth
+## Current app documentation
 
-## Tech Stack
+See [Flints: current app inventory](docs/CURRENT_APP.md) for the screen-by-screen feature list, implemented behavior, disconnected services, known gaps, storage model and verified delivery status.
 
-**Backend:**
-- FastAPI (Python 3.11)
-- PostgreSQL 15
-- Redis 7
-- SQLAlchemy (async)
-- Alembic migrations
-- LangGraph for AI conversations
-- Claude (Anthropic) for AI responses
+## Run
 
-**Frontend:**
-- React 18 + TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion
-- Axios
-
-## Local Development
-
-### Prerequisites
-- Docker & Docker Compose
-- Node.js 18+
-- Python 3.11+
-
-### Setup
-
-1. **Clone the repository:**
-```bash
-git clone https://github.com/takudzwachitsungo/dala.git
-cd dala
-```
-
-2. **Backend Setup:**
-```bash
-cd backend
-cp .env.example .env
-# Edit .env with your configuration
-docker-compose up -d
-```
-
-The backend will be available at `http://localhost:8000`
-
-3. **Frontend Setup:**
-```bash
+```sh
 cd ui
-npm install
-cp .env.example .env
+npm ci
 npm run dev
 ```
 
-The frontend will be available at `http://localhost:5173`
+Open `/` for the app and `/design-system` for the UI reference.
 
-### Database Migrations
+## iPhone
 
-```bash
-# Create a new migration
-alembic revision --autogenerate -m "description"
-
-# Apply migrations
-alembic upgrade head
-
-# Rollback
-alembic downgrade -1
+```sh
+cd ui
+npm run ios:sync
+npm run ios:open
 ```
 
-## Deployment
+The native project is `ui/ios/App/App.xcodeproj`, named **Flints**, with bundle ID `com.flints.companion`. Select a signing team and a connected iPhone in Xcode to install. See [iPhone setup](ui/IPHONE.md).
 
-### Digital Ocean App Platform
+## Data behavior
 
-1. Fork/clone this repository
-2. Connect your Digital Ocean account to GitHub
-3. Create a new App from the `.do/app.yaml` spec
-4. Add environment variables:
-   - `JWT_SECRET_KEY` - Random secure string
-   - `ANTHROPIC_API_KEY` - Your Claude API key
-5. Deploy!
+- Profiles, mood entries, journal notes, safety plans, circle posts/replies, reactions, and path progress are saved on this device.
+- A device profile is not a cloud account. Existing cloud credentials and server data are not imported.
+- Device passwords are stored as salted PBKDF2 hashes, never as plaintext. They select a local profile; they do not encrypt all stored content or replace the iPhone passcode.
+- Circles are private topic spaces on this device. There are no remote members, shared posts, cloud moderation, risk assessment, or escalation services.
+- AI chat and the microphone are disconnected. No scripted assistant replies are presented as AI responses.
+- Clearing app storage or uninstalling can remove the local data. There is no cloud backup/sync in this version.
 
-### Environment Variables
+The `app/` directory is the separately maintained earlier Flutter prototype; it is not the shipped iPhone target. The complete iPhone app is built from `ui/`.
 
-See `backend/.env.example` for required backend variables.
-See `ui/.env.example` for required frontend variables.
+## Checks
 
-## API Documentation
-
-Once the backend is running, visit:
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
-
-## Project Structure
-
-```
-dala/
-├── backend/
-│   ├── app/
-│   │   ├── api/          # API endpoints
-│   │   ├── db/           # Database models
-│   │   ├── schemas/      # Pydantic schemas
-│   │   └── services/     # Business logic & AI
-│   ├── alembic/          # Database migrations
-│   └── Dockerfile
-├── ui/
-│   ├── src/
-│   │   ├── components/   # React components
-│   │   ├── pages/        # Page components
-│   │   └── api/          # API client
-│   └── package.json
-└── docker-compose.yml
+```sh
+cd ui
+npm run test:offline
+npm run test:iphone
+npm run ios:build
 ```
 
-## Contributing
-
-This is a personal project, but feedback and suggestions are welcome!
-
-## License
-
-MIT License - feel free to use this for learning or personal projects.
-
-## Support
-
-For Zimbabwe-specific crisis support:
-- Childline Zimbabwe: 116 (toll-free)
-- Befrienders Zimbabwe: +263 9 65000
-- Emergency Services: 999 or 112
-
----
-
-Built with ❤️ for mental health and spiritual wellness.
+No provider key, server, database, Redis, or external account is required to run Flints.

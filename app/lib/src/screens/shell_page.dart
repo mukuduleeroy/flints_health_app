@@ -7,13 +7,13 @@ import 'home_page.dart';
 import 'paths_page.dart';
 import 'profile_page.dart';
 
-class DalaShellPage extends StatelessWidget {
-  const DalaShellPage({
+class FlintsShellPage extends StatelessWidget {
+  const FlintsShellPage({
     super.key,
     required this.controller,
   });
 
-  final DalaAppController controller;
+  final FlintsAppController controller;
 
   @override
   Widget build(BuildContext context) {

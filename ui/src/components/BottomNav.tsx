@@ -16,7 +16,7 @@ export function BottomNav({
     icon: Home
   }, {
     id: 'companion',
-    label: 'Dala',
+    label: 'Flints',
     icon: MessageCircle
   }, {
     id: 'paths',
@@ -31,7 +31,7 @@ export function BottomNav({
     label: 'Profile',
     icon: User
   }] as const;
-  return <div className="fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-md border-t border-divider/50 pb-safe pt-2 z-50">
+  return <div className="member-nav fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-md border-t border-divider/50 pb-safe pt-2 z-50">
       <div className="max-w-md mx-auto px-6 h-16 flex items-center justify-between">
         {tabs.map(tab => {
         const isActive = activeTab === tab.id;

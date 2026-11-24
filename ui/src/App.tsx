@@ -39,6 +39,20 @@ export function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [username, setUsername] = useState<string>('');
 
+  useEffect(() => {
+    if (authMode !== 'app') return;
+    let active = true;
+    apiClient.getProfile().then(profile => {
+      if (active) { setUsername(profile.username); setIsAdmin(profile.is_admin); }
+    }).catch(() => { if (active) setAuthMode('welcome'); });
+    return () => { active = false; };
+  }, [authMode]);
+
+  // Each destination starts at its own top on iPhone, including admin navigation.
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [activeTab, adminPage, isAdminMode, authMode]);
+
   // Persist active tab to localStorage
   useEffect(() => {
     localStorage.setItem('activeTab', activeTab);
@@ -115,7 +129,7 @@ export function App() {
             {/* Admin Toggle - Only visible for admin users */}
             {isAdmin && (
               <button onClick={() => setIsAdminMode(true)} className="fixed bottom-24 right-6 bg-primary text-white text-xs px-3 py-1 rounded-full opacity-50 hover:opacity-100 transition-opacity">
-                Admin Mode
+                Device Tools
               </button>
             )}
           </div>;
@@ -170,8 +184,8 @@ export function App() {
       </AdminLayout>;
   }
   // Main App
-  return <div className="min-h-screen w-full bg-background selection:bg-sage/20 font-sans">
-      <main className="min-h-screen pb-20">
+  return <div className="app-shell min-h-screen w-full bg-background selection:bg-sage/20 font-sans">
+      <main className="app-main">
         <AnimatePresence mode="wait">{renderTab()}</AnimatePresence>
       </main>
 

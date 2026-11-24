@@ -4,7 +4,7 @@ import { FlaggedContentCard } from '../../components/admin/FlaggedContentCard';
 import { apiClient } from '../../api/client';
 
 interface FlaggedPost {
-  id: string;
+  id: number;
   content: string;
   author_name: string;
   flag_reason: string;
@@ -41,11 +41,11 @@ export function ContentModeration() {
     }
   };
 
-  const handleAction = async (id: string, action: string) => {
+  const handleAction = async (id: number, action: string) => {
     try {
-      if (action === 'hide') {
+      if (action === 'approve') {
         await apiClient.hidePost(id);
-      } else if (action === 'unhide') {
+      } else if (action === 'dismiss') {
         await apiClient.unhidePost(id);
       }
       setQueue(queue.filter(item => item.id !== id));
@@ -103,12 +103,13 @@ export function ContentModeration() {
               key={item.id}
               {...item}
               timestamp={item.created_at}
-              severity={item.flag_severity as 'low' | 'medium' | 'high' | 'critical'}
+              severity={item.flag_severity as 'low' | 'medium' | 'high'}
               reason={item.flag_reason}
               author={item.author_name}
-              onApprove={() => handleAction(item.id, 'unhide')}
-              onHide={() => handleAction(item.id, 'hide')}
-              onEscalate={() => console.log('Escalate:', item.id)}
+              onAction={(id, action) => {
+                if (action === 'escalate') { alert('Remote escalation is disconnected. This note remains on your device.'); return; }
+                void handleAction(id, action);
+              }}
             />
           ))}
         </div>

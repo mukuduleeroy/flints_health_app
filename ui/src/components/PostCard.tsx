@@ -61,7 +61,7 @@ export function PostCard({ post, onReact, onReply, showCircleBadge = false }: Po
       layout
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-2xl p-6 shadow-sm border border-divider/50 hover:border-sage/30 transition-colors"
+      className="community-post bg-white rounded-2xl p-6 shadow-sm border border-divider/50 hover:border-sage/30 transition-colors"
     >
       {/* Circle Badge */}
       {showCircleBadge && post.circle_name && (

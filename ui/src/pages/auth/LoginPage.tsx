@@ -46,7 +46,7 @@ export function LoginPage({
     }
   };
 
-  return <AuthLayout title="Welcome Back" subtitle="Log in to continue your journey." onBack={() => onNavigate('welcome')}>
+  return <AuthLayout title="Open Device Profile" subtitle="Open a profile saved on this device. Cloud accounts are disconnected." onBack={() => onNavigate('welcome')}>
       <form className="space-y-6" onSubmit={handleLogin}>
         <div>
           <label className="block text-sm font-medium text-primary mb-2">
@@ -68,7 +68,7 @@ export function LoginPage({
               Password
             </label>
             <button type="button" className="text-xs text-sage hover:underline">
-              Forgot password?
+              Device profiles only
             </button>
           </div>
           <div className="relative">
@@ -100,14 +100,14 @@ export function LoginPage({
         </div>
 
         <button type="submit" className="w-full bg-sage text-white py-3.5 rounded-xl font-medium shadow-sm hover:bg-sage-hover transition-all disabled:opacity-50 disabled:cursor-not-allowed" disabled={isLoading}>
-          {isLoading ? 'Logging in...' : 'Log In'}
+          {isLoading ? 'Logging in...' : 'Open Profile'}
         </button>
 
         <div className="text-center space-y-4">
           <p className="text-sm text-secondary">
-            Don't have an account?{' '}
+            Need a profile on this device?{' '}
             <button type="button" onClick={() => onNavigate('signup')} className="text-sage font-medium hover:underline" disabled={isLoading}>
-              Sign Up
+              Create Profile
             </button>
           </p>
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../app_controller.dart';
 import '../theme/app_theme.dart';
-import '../widgets/dala_scaffold.dart';
+import '../widgets/flints_scaffold.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({
@@ -10,12 +10,12 @@ class WelcomePage extends StatelessWidget {
     required this.controller,
   });
 
-  final DalaAppController controller;
+  final FlintsAppController controller;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DalaScaffold(
+      body: FlintsScaffold(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
           child: Column(
@@ -46,7 +46,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     Text(
-                      'Welcome to Dala',
+                      'Welcome to Flints',
                       style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                             fontWeight: FontWeight.w700,
                           ),

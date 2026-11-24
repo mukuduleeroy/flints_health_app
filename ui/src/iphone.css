@@ -1,0 +1,258 @@
+/* Preserve Flints's theme; adapt geometry to iPhone, Safari and WKWebView. */
+:root {
+  color-scheme: light;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --app-height: 100dvh;
+  --viewport-top: 0px;
+  --tab-bar-height: calc(73px + var(--safe-bottom));
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  background: #fafaf9;
+}
+body {
+  margin: 0;
+}
+#root {
+  min-height: var(--app-height);
+}
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  touch-action: manipulation;
+}
+input,
+textarea,
+select {
+  scroll-margin-block: 90px;
+}
+:focus-visible {
+  outline: 2px solid #8f9e77;
+  outline-offset: 3px;
+}
+.pb-safe {
+  padding-bottom: var(--safe-bottom);
+}
+.app-shell {
+  padding-top: var(--safe-top);
+  padding-inline: var(--safe-left) var(--safe-right);
+}
+.app-main {
+  min-height: calc(var(--app-height) - var(--safe-top));
+  padding-bottom: var(--tab-bar-height);
+}
+.member-nav {
+  padding-left: var(--safe-left);
+  padding-right: var(--safe-right);
+}
+.auth-screen {
+  min-height: var(--app-height);
+  padding-top: max(24px, var(--safe-top));
+  padding-bottom: max(24px, var(--safe-bottom));
+}
+.companion-screen {
+  height: calc(var(--app-height) - var(--safe-top) - var(--tab-bar-height));
+  min-height: 0;
+  padding-bottom: 0;
+}
+.companion-header {
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.companion-thread {
+  min-height: 0;
+  flex: 1;
+  padding-bottom: 24px;
+  overscroll-behavior-y: contain;
+}
+.companion-composer {
+  position: static;
+  flex-shrink: 0;
+}
+.companion-screen p,
+.community-post p {
+  overflow-wrap: anywhere;
+}
+.safety-overlay {
+  top: var(--viewport-top);
+  bottom: auto;
+  height: var(--app-height);
+  padding-top: max(16px, var(--safe-top));
+  padding-bottom: max(16px, var(--safe-bottom));
+}
+.safety-dialog {
+  max-height: 100%;
+  overscroll-behavior: contain;
+}
+.admin-shell {
+  padding-top: var(--safe-top);
+  padding-inline: var(--safe-left) var(--safe-right);
+  min-height: var(--app-height);
+}
+.admin-mobile-header {
+  top: var(--safe-top);
+}
+.admin-mobile-menu {
+  padding-top: calc(80px + var(--safe-top));
+  padding-bottom: calc(24px + var(--safe-bottom));
+}
+@media (max-width: 767px), (pointer: coarse) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+  .min-h-screen {
+    min-height: var(--app-height);
+  }
+  .h-screen {
+    height: var(--app-height);
+  }
+  .app-shell,
+  .admin-shell {
+    overflow-x: clip;
+  }
+  .auth-screen {
+    padding-inline: max(20px, var(--safe-left)) max(20px, var(--safe-right));
+  }
+  .auth-screen > div {
+    min-width: 0;
+  }
+  .auth-screen form {
+    min-width: 0;
+  }
+  .member-nav button {
+    min-width: 44px;
+    min-height: 48px;
+  }
+  .mood-options {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .mood-options > button {
+    min-width: 44px;
+    min-height: 60px;
+  }
+  .mood-options > button + button {
+    margin-left: 0 !important;
+  }
+  .companion-header {
+    padding: 12px 20px;
+  }
+  .companion-modes {
+    width: 100%;
+  }
+  .companion-modes > div {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .companion-modes button {
+    flex: 1;
+    justify-content: center;
+    min-height: 44px;
+  }
+  .companion-composer button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .companion-composer input {
+    padding-right: 108px;
+  }
+  .companion-thread {
+    padding-inline: 20px;
+  }
+  .community-post {
+    padding: 20px;
+    min-width: 0;
+  }
+  .community-post button {
+    min-height: 44px;
+  }
+  .community-post textarea {
+    min-width: 0;
+  }
+  .admin-page-content {
+    padding: 20px 16px calc(24px + var(--safe-bottom));
+    min-width: 0;
+  }
+  .admin-page-content > div > header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .admin-page-content table {
+    min-width: 640px;
+  }
+  .admin-page-content .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .admin-page-content h2,
+  .admin-page-content h3 {
+    overflow-wrap: anywhere;
+  }
+  .safety-dialog button {
+    min-height: 44px;
+  }
+}
+@media (max-width: 374px) {
+  .auth-screen > div > div.bg-white {
+    padding: 24px 20px;
+  }
+  .app-main > div > header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .member-nav > div {
+    padding-inline: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
+/* Allow the admin flex column to shrink around horizontally scrolling tables. */
+.admin-shell > main {
+  min-width: 0;
+  width: 100%;
+}
+
+@media (pointer: coarse), (max-width: 767px) {
+  .post-composer button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .safety-dialog button.opacity-0 {
+    opacity: 1;
+    min-width: 44px;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-header h1 { padding-inline: 44px; overflow-wrap: anywhere; }
+  .home-header > button { min-width: 44px; min-height: 44px; padding: 12px; }
+}
+
+.admin-dialog-overlay {
+  top: var(--viewport-top);
+  bottom: auto;
+  height: var(--app-height);
+  padding-top: max(16px, var(--safe-top));
+  padding-bottom: max(16px, var(--safe-bottom));
+}
+.admin-dialog-overlay > div { max-height: 100%; overflow-y: auto; overscroll-behavior: contain; }
+@media (pointer: coarse), (max-width: 767px) {
+  .admin-dialog-overlay button { min-height: 44px; min-width: 44px; }
+}

@@ -99,11 +99,10 @@ export function CircleDetailView({
         <ShieldCheck className="text-blue-400 shrink-0 mt-0.5" size={16} />
         <div>
           <h3 className="text-xs font-medium text-blue-900 mb-1">
-            Safe Space Guidelines
+            Your Private Circle
           </h3>
           <p className="text-[11px] text-blue-800/70 leading-relaxed">
-            This is a judgment-free zone. Please be kind, respectful, and
-            supportive. We're all here to heal together.
+            Posts and replies stay on this device. Shared circles are disconnected.
           </p>
         </div>
       </div>

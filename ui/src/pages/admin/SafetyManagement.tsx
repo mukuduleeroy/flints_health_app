@@ -71,7 +71,7 @@ export function SafetyManagement() {
     <div className="max-w-6xl mx-auto">
       <header className="mb-8">
         <h2 className="text-2xl font-light text-primary mb-2">Safety Management</h2>
-        <p className="text-secondary text-sm">Monitor and support users with elevated risk indicators</p>
+        <p className="text-secondary text-sm">Remote risk monitoring and escalation are disconnected.</p>
       </header>
 
       {/* Risk Level Filter */}
@@ -113,8 +113,8 @@ export function SafetyManagement() {
       {/* At-Risk Users List */}
       {users.length === 0 ? (
         <div className="text-center py-12 bg-white rounded-xl border border-divider">
-          <p className="text-secondary">No users currently flagged at this risk level</p>
-          <p className="text-xs text-secondary mt-2">This is good news! ✨</p>
+          <p className="text-secondary">No risk assessment service is connected</p>
+          <p className="text-xs text-secondary mt-2">Use your personal safety plan and trusted support contacts when needed.</p>
         </div>
       ) : (
         <div className="grid gap-4">
@@ -185,7 +185,7 @@ export function SafetyManagement() {
 
       {/* User Detail Modal */}
       {selectedUser && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+        <div className="admin-dialog-overlay fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl p-6 max-w-2xl w-full max-h-[80vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-medium text-primary">User Risk Profile</h3>

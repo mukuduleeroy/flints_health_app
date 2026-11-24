@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../app_controller.dart';
 import '../theme/app_theme.dart';
-import '../widgets/dala_scaffold.dart';
+import '../widgets/flints_scaffold.dart';
 
 class CompanionPage extends StatefulWidget {
   const CompanionPage({
@@ -10,7 +10,7 @@ class CompanionPage extends StatefulWidget {
     required this.controller,
   });
 
-  final DalaAppController controller;
+  final FlintsAppController controller;
 
   @override
   State<CompanionPage> createState() => _CompanionPageState();
@@ -30,7 +30,7 @@ class _CompanionPageState extends State<CompanionPage> {
     return AnimatedBuilder(
       animation: widget.controller,
       builder: (context, _) {
-        return DalaScaffold(
+        return FlintsScaffold(
           child: Column(
             children: [
               Padding(
@@ -39,7 +39,7 @@ class _CompanionPageState extends State<CompanionPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Dala Companion',
+                      'Flints Companion',
                       style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                             fontWeight: FontWeight.w700,
                           ),

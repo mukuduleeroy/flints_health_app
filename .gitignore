@@ -1,0 +1,11 @@
+# Machine-local configuration and metadata
+.DS_Store
+.env
+.env.*
+!.env.example
+!.env.ios.example
+
+# Local signing material
+*.p12
+*.p8
+*.mobileprovision

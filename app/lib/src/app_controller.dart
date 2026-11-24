@@ -138,8 +138,8 @@ class CircleGroup {
   final String energy;
 }
 
-class DalaAppController extends ChangeNotifier {
-  DalaAppController() {
+class FlintsAppController extends ChangeNotifier {
+  FlintsAppController() {
     _seedSessionData();
   }
 
@@ -441,7 +441,7 @@ class DalaAppController extends ChangeNotifier {
       ChatMessage(
         id: 'welcome-message',
         role: 'assistant',
-        text: 'Hi, I\'m Dala. I\'m here to listen with gentleness. What feels most present for you today?',
+        text: 'Hi, I\'m Flints. I\'m here to listen with gentleness. What feels most present for you today?',
         sentAt: DateTime.now(),
       ),
     );

@@ -49,7 +49,7 @@ export function SignupPage({
     }
   };
 
-  return <AuthLayout title="Create Account" subtitle="Join our supportive community." onBack={() => onNavigate('welcome')}>
+  return <AuthLayout title="Create Device Profile" subtitle="Saved on this device only. No cloud account is created." onBack={() => onNavigate('welcome')}>
       <form className="space-y-6" onSubmit={handleSignup}>
         {/* Nickname */}
         <div>
@@ -63,14 +63,14 @@ export function SignupPage({
             </button>
           </div>
           <p className="text-xs text-secondary mt-1.5">
-            This is how you'll appear to others. You can change it later.
+            Your nickname for this device profile.
           </p>
         </div>
 
         {/* Password */}
         <div>
           <label className="block text-sm font-medium text-primary mb-2">
-            Password <span className="text-sage">*</span>
+            Device password <span className="text-sage">*</span>
           </label>
           <div className="relative">
             <input 
@@ -150,14 +150,14 @@ export function SignupPage({
         <PrivacyConsent checked={consentGiven} onChange={setConsentGiven} />
 
         <button type="submit" disabled={!consentGiven || !nickname || !password || isLoading} className="w-full bg-sage text-white py-3.5 rounded-xl font-medium shadow-sm hover:bg-sage-hover disabled:opacity-50 disabled:cursor-not-allowed transition-all">
-          {isLoading ? 'Creating Account...' : 'Create Account'}
+          {isLoading ? 'Creating Account...' : 'Create Device Profile'}
         </button>
 
         <div className="text-center">
           <p className="text-sm text-secondary">
-            Already have an account?{' '}
+            Have a profile on this device?{' '}
             <button type="button" onClick={() => onNavigate('login')} className="text-sage font-medium hover:underline" disabled={isLoading}>
-              Log In
+              Open Profile
             </button>
           </p>
         </div>

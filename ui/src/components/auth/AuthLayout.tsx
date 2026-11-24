@@ -13,7 +13,7 @@ export function AuthLayout({
   subtitle,
   onBack
 }: AuthLayoutProps) {
-  return <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6">
+  return <div className="auth-screen min-h-screen bg-background flex flex-col items-center justify-center p-6">
       <motion.div initial={{
       opacity: 0,
       y: 20
@@ -27,7 +27,7 @@ export function AuthLayout({
 
         <div className="text-center mb-10">
           <h1 className="text-4xl font-light text-primary tracking-tight mb-2">
-            Dala
+            Flints
           </h1>
           {title && <h2 className="text-xl font-medium text-primary mt-6">{title}</h2>}
           {subtitle && <p className="text-secondary text-sm mt-2">{subtitle}</p>}

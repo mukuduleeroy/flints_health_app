@@ -44,7 +44,7 @@ export function SystemMonitoring() {
       <header className="mb-8">
         <h2 className="text-2xl font-light text-primary">System Monitoring</h2>
         <p className="text-secondary text-sm">
-          AI performance and system health.
+          Local device status. AI services are disconnected.
         </p>
       </header>
 
@@ -90,10 +90,10 @@ export function SystemMonitoring() {
                 <p className="text-sm font-medium text-primary">
                   Current Model
                 </p>
-                <p className="text-xs text-secondary">Dala-v2.4 (Fine-tuned)</p>
+                <p className="text-xs text-secondary">AI disconnected</p>
               </div>
               <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
-                Active
+                Disconnected
               </span>
             </div>
             <div className="flex justify-between items-center p-4 bg-background rounded-xl">
@@ -101,10 +101,10 @@ export function SystemMonitoring() {
                 <p className="text-sm font-medium text-primary">
                   Safety Filter
                 </p>
-                <p className="text-xs text-secondary">Strict Mode Enabled</p>
+                <p className="text-xs text-secondary">No AI safety assessment is connected</p>
               </div>
               <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
-                Operational
+                Disconnected
               </span>
             </div>
           </div>

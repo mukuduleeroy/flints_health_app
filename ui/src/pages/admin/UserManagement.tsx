@@ -124,7 +124,7 @@ export function UserManagement() {
         </div>
       ) : (
         <div className="bg-white rounded-2xl shadow-sm border border-divider/50 overflow-hidden">
-          <table className="w-full text-left text-sm">
+          <div className="table-scroll"><table className="w-full text-left text-sm">
             <thead className="bg-background border-b border-divider/50">
               <tr>
                 <th className="px-6 py-4 font-medium text-secondary">User</th>
@@ -221,7 +221,7 @@ export function UserManagement() {
                 })
               )}
             </tbody>
-          </table>
+          </table></div>
         </div>
       )}
     </div>

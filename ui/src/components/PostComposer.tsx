@@ -4,23 +4,25 @@ import { Send } from 'lucide-react';
 interface PostComposerProps {
   onSubmit: (content: string) => void;
   placeholder?: string;
+  disabled?: boolean;
 }
 export function PostComposer({
   onSubmit,
-  placeholder = 'Share your thoughts...'
+  placeholder = 'Share your thoughts...',
+  disabled = false
 }: PostComposerProps) {
   const [content, setContent] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const maxLength = 500;
   const handleSubmit = () => {
-    if (!content.trim()) return;
+    if (disabled || !content.trim()) return;
     onSubmit(content);
     setContent('');
     setIsFocused(false);
   };
-  return <div className="bg-white rounded-2xl p-4 shadow-sm border border-divider/50">
+  return <div className="post-composer bg-white rounded-2xl p-4 shadow-sm border border-divider/50">
       <div className="relative">
-        <textarea value={content} onChange={e => setContent(e.target.value)} onFocus={() => setIsFocused(true)} onBlur={() => !content && setIsFocused(false)} placeholder={placeholder} maxLength={maxLength} className="w-full bg-transparent text-sm text-primary placeholder-secondary/50 resize-none focus:outline-none min-h-[80px]" />
+        <textarea disabled={disabled} value={content} onChange={e => setContent(e.target.value)} onFocus={() => setIsFocused(true)} onBlur={() => !content && setIsFocused(false)} placeholder={placeholder} maxLength={maxLength} className="w-full bg-transparent text-sm text-primary placeholder-secondary/50 resize-none focus:outline-none min-h-[80px]" />
 
         <AnimatePresence>
           {(isFocused || content) && <motion.div initial={{
@@ -37,7 +39,7 @@ export function PostComposer({
                 {content.length}/{maxLength}
               </span>
 
-              <button onClick={handleSubmit} disabled={!content.trim()} className="bg-sage text-white rounded-full p-2 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-sage-hover transition-colors">
+              <button onClick={handleSubmit} aria-label="Publish post" disabled={disabled || !content.trim()} className="bg-sage text-white rounded-full p-2 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-sage-hover transition-colors">
                 <Send size={14} />
               </button>
             </motion.div>}

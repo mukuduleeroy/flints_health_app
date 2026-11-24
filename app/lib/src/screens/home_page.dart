@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../app_controller.dart';
 import '../theme/app_theme.dart';
-import '../widgets/dala_scaffold.dart';
+import '../widgets/flints_scaffold.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
     required this.controller,
   });
 
-  final DalaAppController controller;
+  final FlintsAppController controller;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         final user = widget.controller.user;
         final verse = widget.controller.currentVerse;
 
-        return DalaScaffold(
+        return FlintsScaffold(
           child: SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(20, 18, 20, 120),
             child: Column(
@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'A quick check-in helps Dala tailor the tone and support.',
+                        'A quick check-in helps Flints tailor the tone and support.',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               color: AppTheme.muted,
                             ),
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                       Wrap(
                         spacing: 10,
                         runSpacing: 10,
-                        children: DalaAppController.moodOptions.map((mood) {
+                        children: FlintsAppController.moodOptions.map((mood) {
                           final isSelected =
                               mood.score == widget.controller.selectedMoodScore;
                           return ChoiceChip(
@@ -132,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: _QuickActionCard(
                         icon: Icons.chat_bubble_rounded,
-                        title: 'Talk to Dala',
+                        title: 'Talk to Flints',
                         subtitle: 'Gentle conversation',
                         onTap: () => widget.controller.selectTab(AppTab.companion),
                       ),

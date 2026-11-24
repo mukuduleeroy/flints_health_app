@@ -47,14 +47,14 @@ export function AdminLayout({
     label: 'Analytics',
     icon: BarChart3
   }];
-  return <div className="min-h-screen bg-background flex">
+  return <div className="admin-shell min-h-screen bg-background flex">
       {/* Sidebar - Desktop */}
       <aside className="hidden lg:flex flex-col w-64 border-r border-divider/50 bg-white/50 backdrop-blur-sm fixed h-full z-20">
         <div className="p-6 border-b border-divider/50">
           <h1 className="text-xl font-light text-primary tracking-tight">
-            Dala Admin
+            Flints Device Tools
           </h1>
-          <p className="text-xs text-secondary mt-1">Moderator Dashboard</p>
+          <p className="text-xs text-secondary mt-1">On-device management · no cloud monitoring</p>
         </div>
 
         <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
@@ -71,7 +71,7 @@ export function AdminLayout({
         <div className="p-4 border-t border-divider/50">
           <button onClick={onLogout} className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50 transition-colors">
             <LogOut size={18} />
-            <span>Exit Admin Mode</span>
+            <span>Exit Device Tools</span>
           </button>
         </div>
       </aside>
@@ -79,15 +79,15 @@ export function AdminLayout({
       {/* Main Content */}
       <main className="flex-1 lg:ml-64 min-h-screen flex flex-col">
         {/* Mobile Header */}
-        <header className="lg:hidden h-16 border-b border-divider/50 bg-white/80 backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-30">
-          <span className="font-medium text-primary">Dala Admin</span>
+        <header className="admin-mobile-header lg:hidden h-16 border-b border-divider/50 bg-white/80 backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-30">
+          <span className="font-medium text-primary">Flints Device Tools</span>
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-primary">
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </header>
 
         {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && <div className="lg:hidden fixed inset-0 z-20 bg-background pt-16 px-4 pb-6 overflow-y-auto">
+        {isMobileMenuOpen && <div className="admin-mobile-menu lg:hidden fixed inset-0 z-20 bg-background pt-16 px-4 pb-6 overflow-y-auto">
             <nav className="space-y-2">
               {menuItems.map(item => <button key={item.id} onClick={() => {
             onNavigate(item.id);
@@ -98,13 +98,13 @@ export function AdminLayout({
                 </button>)}
               <button onClick={onLogout} className="w-full flex items-center space-x-3 px-4 py-4 rounded-xl text-sm font-medium text-red-500 mt-4 border-t border-divider">
                 <LogOut size={20} />
-                <span>Exit Admin Mode</span>
+                <span>Exit Device Tools</span>
               </button>
             </nav>
           </div>}
 
         {/* Page Content */}
-        <div className="flex-1 p-6 lg:p-10 overflow-y-auto">{children}</div>
+        <div className="admin-page-content flex-1 p-6 lg:p-10 overflow-y-auto"><p className="text-xs text-secondary mb-6">Device data only. No shared users, AI monitoring, or remote escalation is connected.</p>{children}</div>
       </main>
     </div>;
 }

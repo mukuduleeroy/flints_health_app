@@ -66,7 +66,7 @@ export function HomeTab({
   const handleMoodSelect = async (mood: number) => {
     setSelectedMood(mood);
     
-    // Log mood to backend
+    // Log mood on this device
     try {
       await apiClient.logMood(mood, []);
       setMoodLogged(true);
@@ -100,13 +100,13 @@ export function HomeTab({
     // Add to local state immediately for instant UI feedback
     setEntries([newEntry, ...entries]);
     
-    // Save to backend
+    // Save on this device
     try {
       await apiClient.logMood(selectedMood, [], undefined, text);
-      console.log('Journal entry saved to backend');
+      console.log('Journal entry saved on this device');
     } catch (error) {
       console.error('Failed to save journal entry:', error);
-      // Entry is still in local state even if backend fails
+      // Entry is still in local state even if device storage fails
     }
   };
   const containerVariants = {
@@ -135,7 +135,7 @@ export function HomeTab({
   };
   return <motion.div variants={containerVariants} initial="hidden" animate="visible" exit="exit" className="pb-24 px-6 pt-12 max-w-2xl mx-auto">
       {/* Header */}
-      <motion.header variants={itemVariants} className="text-center mb-12 relative">
+      <motion.header variants={itemVariants} className="home-header text-center mb-12 relative">
         {onLogout && (
           <button
             onClick={onLogout}
@@ -230,7 +230,7 @@ export function HomeTab({
           <div className="w-10 h-10 rounded-full bg-sage/10 flex items-center justify-center text-sage mb-3 group-hover:bg-sage/20 transition-colors">
             <MessageCircle size={20} />
           </div>
-          <span className="text-xs font-medium text-primary">Talk to Dala</span>
+          <span className="text-xs font-medium text-primary">Talk to Flints</span>
         </button>
 
         <button onClick={handleReflectClick} className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl shadow-sm border border-divider/50 hover:border-sage/50 transition-colors group">

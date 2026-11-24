@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../app_controller.dart';
 import '../theme/app_theme.dart';
-import '../widgets/dala_scaffold.dart';
+import '../widgets/flints_scaffold.dart';
 
 class CirclesPage extends StatelessWidget {
   const CirclesPage({
@@ -10,11 +10,11 @@ class CirclesPage extends StatelessWidget {
     required this.controller,
   });
 
-  final DalaAppController controller;
+  final FlintsAppController controller;
 
   @override
   Widget build(BuildContext context) {
-    return DalaScaffold(
+    return FlintsScaffold(
       child: ListView(
         padding: const EdgeInsets.fromLTRB(20, 18, 20, 120),
         children: [

@@ -25,7 +25,7 @@ export function MoodSelector({
   onSelectMood
 }: MoodSelectorProps) {
   return <div className="flex flex-col items-center space-y-8 py-8">
-      <div className="flex items-center justify-center space-x-12">
+      <div className="mood-options flex items-center justify-center space-x-12">
         {moods.map(mood => {
         const isSelected = selectedMood === mood.value;
         return <button key={mood.value} onClick={() => onSelectMood(mood.value)} className="group flex flex-col items-center focus:outline-none" aria-label={`Select mood: ${mood.label}`}>
